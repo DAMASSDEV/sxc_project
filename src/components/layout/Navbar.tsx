@@ -10,7 +10,7 @@ const navLinks = [
   { name: "About Us", href: "#about" },
   { name: "Program", href: "#programs" },
   { name: "Partnership", href: "#partnership" },
-  { name: "Contact Us", href: "#contact" },
+  { name: "Contact Us", href: "/#contact" },
 ];
 
 const Navbar = () => {
@@ -22,6 +22,7 @@ const Navbar = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
