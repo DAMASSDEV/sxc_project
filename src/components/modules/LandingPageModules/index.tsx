@@ -4,7 +4,8 @@ import AboutSection from "@/components/modules/LandingPageModules/sections/About
 import ProgramsSection from "@/components/modules/LandingPageModules/sections/ProgramsSection";
 import ImpactSection from "@/components/modules/LandingPageModules/sections/ImpactSection";
 import PartnershipSection from "@/components/modules/LandingPageModules/sections/PartnershipSection";
-import ContactSection from "@/components/modules/LandingPageModules/sections/ContactSection";
+import ContactModule from "@/components/modules/ContactModule";
+
 
 export default function LandingPageModule() {
   return (
@@ -15,7 +16,7 @@ export default function LandingPageModule() {
       <ProgramsSection />
       <ImpactSection />
       <PartnershipSection />
-      <ContactSection />
+      <ContactModule />
     </div>
   );
 }

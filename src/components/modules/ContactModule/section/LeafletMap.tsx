@@ -122,7 +122,7 @@ const LeafletMap = ({ onError }: { onError?: () => void }) => {
   }, [onError]);
 
   return (
-    <div className="relative h-48 rounded-xl overflow-hidden">
+    <div className="relative h-48 rounded-xl overflow-hidden z-10">
       {!isMapLoaded && (
         <div className="absolute inset-0 bg-muted flex items-center justify-center z-10">
           <div className="text-center">

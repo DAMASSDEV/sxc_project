@@ -14,9 +14,12 @@ import { useEmailJS } from "@/hooks/use-emailjs";
 import { contactInfo } from "./data/contact-info";
 import { socialLinks } from "./data/social-links";
 
+import { usePathname } from "next/navigation";
+
 const ContactModule = () => {
+  const pathName = usePathname();
   const ref = useRef<HTMLDivElement | null>(null);
-  const isInView = useInView(ref, { once: true, margin: "100px" });
+  const isInView = useInView(ref, { once: true, margin: pathName == "/contact" ? "700px" : "-100px" });
 
   const [isMapError, setIsMapError] = useState(false);
   const [formData, setFormData] = useState({
@@ -50,17 +53,16 @@ const ContactModule = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
-        >
-          <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+          className="text-center max-w-3xl mx-auto mb-16">
+          <span className="text-primary text-sm font-semibold uppercase tracking-wider cursor-pointer">
             Contact Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6">
             Lets <span className="text-primary">Connect</span>
           </h2>
           <p className="text-muted-foreground text-lg">
-            Have questions about our programs or partnership opportunities?
-            Wed love to hear from you.
+            Have questions about our programs or partnership opportunities? Wed
+            love to hear from you.
           </p>
         </motion.div>
 
@@ -69,8 +71,7 @@ const ContactModule = () => {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-          >
+            transition={{ duration: 0.6, delay: 0.2 }}>
             <div className="bg-card rounded-3xl p-8 border border-border">
               <h3 className="text-2xl font-bold mb-6">Send us a message</h3>
 
@@ -111,7 +112,10 @@ const ContactModule = () => {
                   className="resize-none"
                 />
 
-                <Button type="submit" size="lg" className="w-full cursor-pointer">
+                <Button
+                  type="submit"
+                  size="lg"
+                  className="w-full cursor-pointer">
                   <Send className="w-4 h-4 mr-2" />
                   Send Message
                 </Button>
@@ -124,8 +128,7 @@ const ContactModule = () => {
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="space-y-8"
-          >
+            className="space-y-8">
             {/* Contact Info */}
             <div className="space-y-4">
               {contactInfo.map((item) => (
@@ -133,13 +136,14 @@ const ContactModule = () => {
                   key={item.label}
                   href={item.href}
                   target="_blank"
-                  className="flex items-center gap-4 bg-card rounded-2xl p-5 border border-border hover:border-primary/30 transition-all"
-                >
+                  className="flex items-center gap-4 bg-card rounded-2xl p-5 border border-border hover:border-primary/30 transition-all">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <p className="text-sm text-muted-foreground">{item.label}</p>
+                    <p className="text-sm text-muted-foreground">
+                      {item.label}
+                    </p>
                     <p className="font-medium">{item.value}</p>
                   </div>
                 </a>
@@ -156,8 +160,7 @@ const ContactModule = () => {
                     href={item.href}
                     target="_blank"
                     aria-label={item.label}
-                    className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all"
-                  >
+                    className="w-12 h-12 rounded-xl bg-muted flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-all">
                     <item.icon className="w-5 h-5" />
                   </a>
                 ))}
