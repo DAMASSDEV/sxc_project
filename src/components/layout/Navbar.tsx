@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,6 +15,7 @@ const navLinks = [
 ];
 
 const Navbar = () => {
+  const pathname = usePathname();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileOpen, setIsMobileOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
@@ -69,15 +71,27 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                className="text-muted-foreground hover:text-primary transition-colors font-medium"
-                whileHover={{ y: -2 }}>
-                {link.name}
-              </motion.a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  className={`group relative font-medium transition-colors ${
+                    isActive
+                      ? "text-blue-500"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                  whileHover={{ y: -2 }}>
+                  {link.name}
+                  <span
+                    className={`pointer-events-none absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-blue-500 origin-center transition-transform duration-300 ${
+                      isActive ? "scale-x-100" : "scale-x-0"
+                    } group-hover:scale-x-100`}
+                  />
+                </motion.a>
+              );
+            })}
             <Button
               variant="ghost"
               size="icon"
@@ -122,15 +136,22 @@ const Navbar = () => {
             exit={{ opacity: 0, height: 0 }}
             className="md:hidden bg-background border-t border-border">
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
-              {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="text-foreground hover:text-primary transition-colors py-2"
-                  onClick={() => setIsMobileOpen(false)}>
-                  {link.name}
-                </a>
-              ))}
+              {navLinks.map((link) => {
+                const isActive = pathname === link.href;
+                return (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    className={`py-2 transition-colors ${
+                      isActive
+                        ? "text-blue-500"
+                        : "text-foreground hover:text-primary"
+                    }`}
+                    onClick={() => setIsMobileOpen(false)}>
+                    {link.name}
+                  </a>
+                );
+              })}
             </div>
           </motion.div>
         )}
