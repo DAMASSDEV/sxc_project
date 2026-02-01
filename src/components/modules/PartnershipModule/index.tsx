@@ -12,6 +12,7 @@ import { stakeholders } from "./data/stakeholders";
 import { partnershipPrograms } from "./data/partnership-programs";
 import PartnershipLogoCarousel from "./section/PartnershipLogoCarousel";
 import { partnerLogos } from "./data/partner-logos";
+import ChatbotFAB from "../ChatbotModule";
 
 const PartnershipModule = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -37,16 +38,16 @@ const PartnershipModule = () => {
           {/* Partner logo carousel */}
           <PartnershipLogoCarousel
             items={partnerLogos}
-            title="Partner Logo"
-            subtitle="Perusahaan & komunitas yang sudah berkolaborasi."
+            title="Past Partnership"
+            subtitle="Companies & communities that are already collaborating."
           />
 
           {/* Stakeholders */}
           <div className="mb-10">
             <h3 className="text-2xl font-bold mb-4">Key Stakeholders</h3>
             <p className="text-muted-foreground mb-6">
-              Kolaborasi kami bertumpu pada relasi kuat dengan stakeholder utama
-              dalam ekosistem pengembangan talenta.
+              Our collaboration rests on strong relationships with key
+              stakeholders in the talent development ecosystem.
             </p>
             <StakeholderGrid items={stakeholders} />
           </div>
@@ -55,20 +56,21 @@ const PartnershipModule = () => {
           <div className="mt-14">
             <h3 className="text-2xl font-bold mb-4">Partnership Programs</h3>
             <p className="text-muted-foreground mb-6">
-              Contoh program kolaborasi yang dirancang untuk menghasilkan
-              outcome nyata dan terukur.
+              Examples of collaborative programmes designed to produce tangible
+              and measurable outcomes.
             </p>
             <PartnershipProgramList items={partnershipPrograms} />
           </div>
 
           <PartnershipCTA
             title="Let’s build impact together"
-            description="Punya program, beasiswa, atau inisiatif talent development? Kita bisa rancang kurikulum, eksekusi program, dan ukur dampaknya bersama."
+            description="Have a talent development programme, scholarship or initiative? We can design the curriculum, execute the programme, and measure the impact together."
             primaryLabel="Contact Partnership Team"
             primaryHref="#contact"
           />
         </motion.div>
       </div>
+      <ChatbotFAB />
     </section>
   );
 };

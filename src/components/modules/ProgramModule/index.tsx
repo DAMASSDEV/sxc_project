@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { programs } from "./const";
+import ChatbotFAB from "../ChatbotModule";
 
 export const ProgramModule = () => {
   const ref = useRef(null);
@@ -18,7 +19,8 @@ export const ProgramModule = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16">
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
           <span className="text-primary font-semibold text-sm uppercase tracking-wider">
             Our Programs
           </span>
@@ -81,6 +83,7 @@ export const ProgramModule = () => {
           })}
         </div>
       </div>
+      <ChatbotFAB />
     </section>
   );
 };
