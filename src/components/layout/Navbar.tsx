@@ -51,27 +51,31 @@ const Navbar = () => {
         isScrolled
           ? "bg-background/95 backdrop-blur-md shadow-lg"
           : "bg-transparent"
-      }`}>
+      }`}
+    >
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 md:h-20 relative">
           {/* Logo */}
           <motion.a
             href="/"
             className="flex items-center gap-2"
-            whileHover={{ scale: 1.02 }}>
+            whileHover={{ scale: 1.02 }}
+          >
             <Image
               src={monas}
               alt="image monas"
               className=" size-30 absolute -left-12 -top-7"
             />
-            <div className="hidden sm:block ml-6">
+            <div className="sm:block ml-8">
               <span
-                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}>
+                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}
+              >
                 Students
               </span>
               <span className="text-primary font-bold">x</span>
               <span
-                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}>
+                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}
+              >
                 CEOs
               </span>
             </div>
@@ -87,10 +91,14 @@ const Navbar = () => {
                   href={link.href}
                   className={`group relative font-medium transition-colors ${
                     isActive
-                      ? "text-blue-500"
-                      : "text-muted-foreground hover:text-primary"
+                      ? isScrolled
+                        ? "text-primary"
+                        : "text-white"
+                      : isScrolled
+                        ? "text-muted-foreground hover:text-primary"
+                        : "text-white/80 hover:text-white"
                   }`}
-                  whileHover={{ y: -2 }}>
+                >
                   {link.name}
                   <span
                     className={`pointer-events-none absolute -bottom-2 left-0 h-0.5 w-full rounded-full bg-blue-500 origin-center transition-transform duration-300 ${
@@ -100,7 +108,7 @@ const Navbar = () => {
                 </motion.a>
               );
             })}
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
@@ -110,12 +118,12 @@ const Navbar = () => {
               ) : (
                 <Moon className="w-5 h-5 text-primary" />
               )}
-            </Button>
+            </Button> */}
           </div>
 
           {/* Mobile Menu Button */}
           <div className="flex items-center gap-2 md:hidden">
-            <Button
+            {/* <Button
               variant="ghost"
               size="icon"
               onClick={toggleTheme}
@@ -125,10 +133,13 @@ const Navbar = () => {
               ) : (
                 <Moon className="w-5 h-5 text-primary" />
               )}
-            </Button>
+            </Button> */}
             <button
-              className="p-2"
-              onClick={() => setIsMobileOpen(!isMobileOpen)}>
+              className={`p-2 transition-colors ${
+                isScrolled ? "text-foreground" : "text-white"
+              }`}
+              onClick={() => setIsMobileOpen(!isMobileOpen)}
+            >
               {isMobileOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -142,7 +153,8 @@ const Navbar = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-background border-t border-border">
+            className="md:hidden bg-background border-t border-border"
+          >
             <div className="container mx-auto px-4 py-4 flex flex-col gap-4">
               {navLinks.map((link) => {
                 const isActive = pathname === link.href;
@@ -155,7 +167,8 @@ const Navbar = () => {
                         ? "text-blue-500"
                         : "text-foreground hover:text-primary"
                     }`}
-                    onClick={() => setIsMobileOpen(false)}>
+                    onClick={() => setIsMobileOpen(false)}
+                  >
                     {link.name}
                   </a>
                 );
