@@ -10,8 +10,8 @@ export const contactInfo = [
   {
     icon: Phone,
     label: "Phone",
-    value: "+62 812 9744 7680",
-    href: "tel:+6281297447680",
+    value: "+62 812 8811 9922",
+    href: "tel:+6281288119922",
   },
   {
     icon: MapPin,

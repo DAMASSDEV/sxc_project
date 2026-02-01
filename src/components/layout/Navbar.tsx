@@ -5,6 +5,8 @@ import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import monas from "@/assets/monas-no-bg.png";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -51,21 +53,27 @@ const Navbar = () => {
           : "bg-transparent"
       }`}>
       <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-16 md:h-20">
+        <div className="flex items-center justify-between h-16 md:h-20 relative">
           {/* Logo */}
           <motion.a
             href="/"
             className="flex items-center gap-2"
             whileHover={{ scale: 1.02 }}>
-            <div className="w-10 h-10 rounded-lg bg-linear-to-br from-primary to-accent flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-lg">
-                S
+            <Image
+              src={monas}
+              alt="image monas"
+              className=" size-30 absolute -left-12 -top-7"
+            />
+            <div className="hidden sm:block ml-6">
+              <span
+                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}>
+                Students
               </span>
-            </div>
-            <div className="hidden sm:block">
-              <span className="font-bold text-secondary">Students</span>
               <span className="text-primary font-bold">x</span>
-              <span className="font-bold text-secondary">CEOs</span>
+              <span
+                className={`font-bold ${isScrolled ? "text-secondary" : "text-primary-foreground"}`}>
+                CEOs
+              </span>
             </div>
           </motion.a>
 
