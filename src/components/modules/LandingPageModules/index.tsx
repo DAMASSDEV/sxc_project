@@ -6,6 +6,7 @@ import ImpactSection from "@/components/modules/LandingPageModules/sections/Impa
 import PartnershipSection from "@/components/modules/LandingPageModules/sections/PartnershipSection";
 import ContactModule from "@/components/modules/ContactModule";
 import ChatbotFAB from "@/components/modules/ChatbotModule";
+import BackToTopButton from "./sections/BackToTopButton";
 
 
 export default function LandingPageModule() {
@@ -19,6 +20,7 @@ export default function LandingPageModule() {
       <PartnershipSection />
       <ContactModule />
       <ChatbotFAB />
+      <BackToTopButton/>
     </div>
   );
 }
