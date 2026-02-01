@@ -3,61 +3,17 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import {
-  BookOpen,
-  Briefcase,
-  Handshake,
-  Award,
-  ArrowRight,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-
-const programs = [
-  {
-    icon: BookOpen,
-    title: "Case-Based Learning",
-    description:
-      "Engage with real business cases from top companies. Develop analytical thinking and problem-solving skills through hands-on experience.",
-    color: "from-primary to-accent",
-    features: ["Real Company Cases", "Expert Mentorship", "Team Collaboration"],
-  },
-  {
-    icon: Briefcase,
-    title: "Leadership Accelerator",
-    description:
-      "Fast-track your leadership journey with our intensive programs designed to build boardroom-ready skills.",
-    color: "from-accent to-primary",
-    features: [
-      "Executive Workshops",
-      "Soft Skills Training",
-      "Career Guidance",
-    ],
-  },
-  {
-    icon: Handshake,
-    title: "Corporate Connect",
-    description:
-      "Direct access to 100+ corporate partners. Network with industry leaders and explore internship opportunities.",
-    color: "from-primary to-amber-400",
-    features: ["Networking Events", "Internship Pipeline", "Industry Exposure"],
-  },
-  {
-    icon: Award,
-    title: "Apprenticeship Program",
-    description:
-      "Join our selective apprenticeship to gain practical experience while contributing to real organizational projects.",
-    color: "from-amber-400 to-primary",
-    features: ["Project Experience", "Skill Development", "Certificate"],
-  },
-];
+import { programs } from "@/components/modules/ProgramModule/const";
 
 const ProgramsSection = () => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section id="programs" className="py-20 md:py-32 bg-muted/30">
-      <div className="container mx-auto px-4 md:px-6">
+    <section
+      id="programs"
+      className="relative overflow-hidden py-20 md:py-32 bg-background">
+      <div className="container relative mx-auto px-4 md:px-6">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -78,48 +34,54 @@ const ProgramsSection = () => {
         </motion.div>
 
         {/* Programs Grid */}
-        <div className="grid md:grid-cols-2 gap-6 lg:gap-8">
-          {programs.map((program, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative bg-card rounded-2xl p-6 md:p-8 border border-border hover:border-primary/30 transition-all duration-300 hover:shadow-xl">
-              {/* Icon */}
-              <div
-                className={`w-14 h-14 rounded-xl bg-linear-to-br ${program.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform`}>
-                <program.icon className="w-7 h-7 text-white" />
-              </div>
+        <div className="max-w-6xl mx-auto grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+          {programs.map((program, index) => {
+            const Icon = program.icon;
+            return (
+              <motion.div
+                key={program.id}
+                initial={{ opacity: 0, y: 20 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                className="group rounded-3xl border border-border/60 bg-card p-6 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.35)] transition-all duration-300 hover:-translate-y-1 hover:border-primary/30 hover:shadow-[0_20px_50px_-24px_rgba(99,102,241,0.35)]">
+                <div className="flex flex-col gap-5">
+                  {/* Left: Logo Placeholder */}
+                  <div className="shrink-0">
+                    <div className="relative">
+                      <div
+                        className={`relative flex h-16 w-16 items-center justify-center rounded-2xl bg-linear-to-br ${program.color} ring-1 ring-white/20 transition-transform duration-300 group-hover:scale-105 md:h-20 md:w-20`}>
+                        <Icon className="h-8 w-8 text-white md:h-10 md:w-10" />
+                      </div>
+                    </div>
+                  </div>
 
-              {/* Content */}
-              <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3">
-                {program.title}
-              </h3>
-              <p className="text-muted-foreground mb-6">
-                {program.description}
-              </p>
-
-              {/* Features */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {program.features.map((feature, i) => (
-                  <span
-                    key={i}
-                    className="px-3 py-1 text-sm bg-primary/10 text-primary rounded-full">
-                    {feature}
-                  </span>
-                ))}
-              </div>
-
-              {/* CTA */}
-              <Button
-                variant="ghost"
-                className="text-primary hover:text-primary hover:bg-primary/10 p-0 group/btn">
-                Learn More
-                <ArrowRight className="ml-2 w-4 h-4 group-hover/btn:translate-x-1 transition-transform" />
-              </Button>
-            </motion.div>
-          ))}
+                  {/* Right: Content */}
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-center gap-3">
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground group-hover:text-primary transition-colors">
+                        {program.title}
+                      </h3>
+                      <span className="hidden rounded-full border border-primary/20 bg-primary/5 px-2.5 py-1 text-[11px] font-semibold uppercase tracking-wide text-primary md:inline-block">
+                        Program
+                      </span>
+                    </div>
+                    <p className="mt-2 text-sm text-muted-foreground md:text-base">
+                      {program.description}
+                    </p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {program.features?.map((feature, i) => (
+                        <span
+                          key={i}
+                          className="rounded-full border border-primary/20 bg-primary/10 px-3 py-1 text-xs font-medium text-primary transition-colors hover:bg-primary/20 md:text-sm">
+                          {feature}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            );
+          })}
         </div>
       </div>
     </section>
