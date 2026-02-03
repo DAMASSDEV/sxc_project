@@ -47,7 +47,7 @@ export const ProgramModule = () => {
                 className={`flex flex-col ${isEven ? "md:flex-row" : "md:flex-row-reverse"} items-center gap-12 lg:gap-24`}>
                 {/* Image Section dengan Shape Melengkung ala McKinsey */}
                 <div className="flex-1 w-full relative group">
-                  <div className="relative aspect-[4/3] overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-sm">
+                  <div className="relative aspect-4/3 overflow-hidden rounded-tr-[100px] rounded-bl-[100px] shadow-sm">
                     <Image
                       src={program.image}
                       alt={program.title}
@@ -68,9 +68,13 @@ export const ProgramModule = () => {
                   <p className="text-gray-600 text-lg leading-relaxed mb-8 font-light">
                     {program.description}
                   </p>
-                  <button className="text-primary font-semibold border-b-2 border-primary/20 pb-1 transition-all hover:border-primary hover:pr-4">
-                    Learn more
-                  </button>
+                  <a
+                    href="https://docs.google.com/forms/d/e/1FAIpQLSfezJ4fESoXGCyr1UXkG1gqIif6f2ZylEfuNm2IPkNctmD_lQ/viewform?usp=dialog"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary font-semibold border-b-2 border-primary/20 pb-1 transition-all hover:border-primary hover:pr-4 inline-block">
+                    JOIN PROGRAM
+                  </a>
                 </div>
               </motion.div>
             );
