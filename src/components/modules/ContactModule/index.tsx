@@ -16,6 +16,7 @@ import { socialLinks } from "./data/social-links";
 
 import { usePathname } from "next/navigation";
 import ChatbotFAB from "../ChatbotModule";
+import BackToTopButton from "../LandingPageModules/sections/BackToTopButton";
 
 const ContactModule = () => {
   const pathName = usePathname();

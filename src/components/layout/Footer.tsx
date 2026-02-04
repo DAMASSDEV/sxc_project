@@ -30,7 +30,8 @@ const Footer = () => {
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4 relative">
               <Image src={monas} alt="Monas" className="size-30 absolute -left-12 -top-14" />
-              <div className="ml-6">
+              {/* Bisa di atur disini */}
+              <div className="ml-9">
                 <span className="font-bold text-primary-foreground">
                   Students
                 </span>

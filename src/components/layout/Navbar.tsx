@@ -60,7 +60,6 @@ const Navbar = () => {
           <motion.a
             href="/"
             className="flex items-center gap-2"
-            whileHover={{ scale: 1.02 }}
           >
             <Image
               src={monas}

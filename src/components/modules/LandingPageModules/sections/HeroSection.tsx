@@ -9,8 +9,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary"
-    >
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary">
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-linear-to-b from-secondary via-secondary/95 to-secondary" />
 
@@ -34,8 +33,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 mt-20"
-          >
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 mb-8 mt-20">
             <Sparkles className="w-4 h-4 text-white/50" />
             <span className="text-white/50 text-sm font-medium">
               Jakarta Batch 14 • Since 2010
@@ -47,8 +45,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-foreground mb-6 leading-tight"
-          >
+            className="text-4xl md:text-6xl lg:text-7xl font-bold text-secondary-foreground mb-6 leading-tight">
             Bridging{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
               Students
@@ -64,8 +61,7 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-white/50 mb-10 max-w-2xl mx-auto"
-          >
+            className="text-lg md:text-xl text-white/50 mb-10 max-w-2xl mx-auto">
             Strategic leadership accelerator cultivating Indonesias next
             generation of business leaders. Connecting 1,000+ high-potential
             students with 100+ corporate partners.
@@ -76,22 +72,23 @@ const HeroSection = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 justify-center"
-          >
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-xl group"
-            >
-              Join as Student
-              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className=" border-white/60 text-white bg-transparent hover:bg-transparent hover:text-white hover:border-white/60 px-8 py-6 text-lg"
-            >
-              Partner with Us
-            </Button>
+            className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfezJ4fESoXGCyr1UXkG1gqIif6f2ZylEfuNm2IPkNctmD_lQ/viewform?usp=dialog">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg shadow-xl group cursor-pointer">
+                Join as Student
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </a>
+            <a href="#contact">
+              <Button
+                size="lg"
+                variant="outline"
+                className=" border-white/60 text-white bg-transparent hover:bg-transparent hover:text-white hover:border-white/60 px-8 py-6 text-lg cursor-pointer">
+                Contact Us
+              </Button>
+            </a>
           </motion.div>
 
           {/* Stats Preview */}
