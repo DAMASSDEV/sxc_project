@@ -23,7 +23,7 @@ export default function PartnershipHeader({
     return (
       <>
         {before}
-        <span className="text-primary">{highlight}</span>
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">{highlight}</span>
         {after}
       </>
     );

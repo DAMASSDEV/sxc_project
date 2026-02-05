@@ -64,7 +64,7 @@ const ContactModule = () => {
             Contact Us
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-6">
-            Lets <span className="text-primary">Connect</span>
+            Lets <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">Connect</span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Have questions about our programs or partnership opportunities? Wed

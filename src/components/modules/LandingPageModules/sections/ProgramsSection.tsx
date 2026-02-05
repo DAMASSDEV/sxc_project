@@ -89,7 +89,7 @@ const ProgramsSection = () => {
                   2. lg:min-h-[520px] untuk desktop agar tetap konsisten.
                   3. Flex-col di mobile dan flex-row di desktop.
                 */}
-                <div className="group flex flex-col lg:flex-row bg-white border-2 border-primary/20 overflow-hidden min-h-[600px] lg:min-h-[520px] h-full shadow-2xl shadow-primary/10 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 items-stretch">
+                <div className="group flex flex-col lg:flex-row bg-white border-2 border-primary/20 overflow-hidden min-h-150 lg:min-h-130 h-full shadow-2xl shadow-primary/10 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 items-stretch">
                   {/* Sisi Atas/Kiri: Gambar */}
                   <div className="relative w-full lg:w-1/2 h-62.5 lg:h-auto overflow-hidden shrink-0">
                     <div className="absolute top-6 left-6 z-20 bg-primary px-5 py-1.5 text-white text-[10px] font-black uppercase tracking-[0.2em]">

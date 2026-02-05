@@ -27,7 +27,10 @@ export const ProgramModule = () => {
             Our Programs
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
-            Structured Pathways to <span className="text-primary">Success</span>
+            Structured Pathways to{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
+              Success
+            </span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Comprehensive programs designed to connect academic potential with
