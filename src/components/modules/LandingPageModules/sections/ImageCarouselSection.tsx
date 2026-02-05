@@ -1,10 +1,11 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
+import useEmblaCarousel from "embla-carousel-react";
+import Autoplay from "embla-carousel-autoplay";
+import { ChevronLeft, ChevronRight, Play, Pause } from "lucide-react";
 
 interface CarouselImage {
   src: string;
@@ -48,26 +49,39 @@ const images: CarouselImage[] = [
 ];
 
 const ImageCarousel = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    {
+      loop: true,
+      align: "center",
+      containScroll: "trimSnaps",
+    },
+    [Autoplay({ delay: 5000, stopOnInteraction: false })],
+  );
+
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const onSelect = useCallback(() => {
+    if (!emblaApi) return;
+    setSelectedIndex(emblaApi.selectedScrollSnap());
+  }, [emblaApi]);
 
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (!emblaApi) return;
+    onSelect();
+    emblaApi.on("select", onSelect);
+  }, [emblaApi, onSelect]);
 
-    const interval = setInterval(() => {
-      setCurrentIndex((prev) => (prev + 1) % images.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [isAutoPlaying]);
-
-  const goToPrevious = () => {
-    setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
-  };
-
-  const goToNext = () => {
-    setCurrentIndex((prev) => (prev + 1) % images.length);
-  };
+  const toggleAutoplay = useCallback(() => {
+    const autoplay = emblaApi?.plugins()?.autoplay;
+    if (!autoplay) return;
+    if (isPlaying) {
+      autoplay.stop();
+    } else {
+      autoplay.play();
+    }
+    setIsPlaying(!isPlaying);
+  }, [emblaApi, isPlaying]);
 
   return (
     <section className="py-16 md:py-24 bg-secondary/5">
@@ -79,115 +93,126 @@ const ImageCarousel = () => {
           viewport={{ once: true }}
           className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Momen{" "}
+            Captured{" "}
             <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
-              Berharga
+              Moments
             </span>
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            Dokumentasi kegiatan dan program StudentsxCEOs Jakarta
+            A visual journey through our transformative programs and events
           </p>
         </motion.div>
 
-        <div
-          className="relative max-w-5xl mx-auto"
-          onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}>
-          {/* Main Image */}
-          <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl">
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={currentIndex}
-                initial={{ opacity: 0, x: 100 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -100 }}
-                transition={{ duration: 0.5 }}
-                className="absolute inset-0">
-                <Image
-                  src={images[currentIndex].src}
-                  alt={images[currentIndex].alt}
-                  fill
-                  sizes="(max-width: 768px) 100vw, 1024px"
-                  className="object-cover"
-                  priority={currentIndex === 0}
-                />
-                {/* Overlay */}
-                <div className="absolute inset-0 bg-linear-to-t from-secondary/90 via-secondary/20 to-transparent" />
-
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
-                  <motion.h3
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.2 }}
-                    className="text-2xl md:text-3xl font-bold text-white mb-2">
-                    {images[currentIndex].title}
-                  </motion.h3>
-                  <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="text-white/80 text-sm md:text-base">
-                    {images[currentIndex].description}
-                  </motion.p>
-                </div>
-              </motion.div>
-            </AnimatePresence>
-
-            {/* Navigation Buttons */}
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
-              onClick={goToPrevious}>
-              <ChevronLeft className="w-6 h-6" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/20 hover:bg-white/40 text-white backdrop-blur-sm"
-              onClick={goToNext}>
-              <ChevronRight className="w-6 h-6" />
-            </Button>
-          </div>
-
-          {/* Dots Indicator */}
-          <div className="flex justify-center gap-2 mt-6">
-            {images.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                  index === currentIndex
-                    ? "bg-primary w-8"
-                    : "bg-muted hover:bg-primary/50"
-                }`}
-              />
-            ))}
-          </div>
-
-          {/* Thumbnail Preview */}
-          <div className="hidden md:flex justify-center gap-4 mt-8">
+        {/* Carousel Viewport */}
+        <div className="max-w-7xl mx-auto overflow-hidden" ref={emblaRef}>
+          <div className="flex -ml-4">
             {images.map((image, index) => (
-              <motion.button
+              <div
                 key={index}
-                onClick={() => setCurrentIndex(index)}
-                className={`relative w-20 h-14 rounded-lg overflow-hidden transition-all duration-300 ${
-                  index === currentIndex
-                    ? "ring-2 ring-primary ring-offset-2 ring-offset-background scale-110"
-                    : "opacity-60 hover:opacity-100"
-                }`}
-                whileHover={{ scale: index === currentIndex ? 1.1 : 1.05 }}>
-                <Image
-                  src={image.src}
-                  alt={image.alt}
-                  width={80}
-                  height={56}
-                  className="object-cover w-full h-full"
-                />
-              </motion.button>
+                className="flex-[0_0_100%] min-w-0 pl-4 md:flex-[0_0_95%] lg:flex-[0_0_90%]">
+                <div className="group relative aspect-video overflow-hidden border-2 border-primary/20 shadow-2xl shadow-primary/10 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300">
+                  <Image
+                    src={image.src}
+                    alt={image.alt}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1024px"
+                    className="object-cover transition-transform duration-[1.5s] ease-out group-hover:scale-105"
+                    priority={index === 0}
+                  />
+                  {/* Overlay */}
+                  <div className="absolute inset-0 bg-linear-to-t from-secondary/90 via-secondary/20 to-transparent" />
+
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10">
+                    <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                      {image.title}
+                    </h3>
+                    <p className="text-white/80 text-sm md:text-base">
+                      {image.description}
+                    </p>
+                  </div>
+                </div>
+              </div>
             ))}
           </div>
+        </div>
+
+        {/* Navigation Controls */}
+        <div className="mt-4 md:mt-8 flex flex-col md:flex-row items-center justify-between max-w-7xl mx-auto gap-8 border-t border-white/5 pt-10 px-2">
+          <button
+            onClick={toggleAutoplay}
+            className="flex h-12 w-12 items-center justify-center bg-white/5 border border-white/10 text-foreground hover:bg-primary hover:text-white transition-all shadow-sm group">
+            {isPlaying ? (
+              <Pause size={18} className="fill-current" />
+            ) : (
+              <Play size={18} className="fill-current translate-x-0.5" />
+            )}
+          </button>
+
+          <div className="flex items-center gap-8 lg:gap-12">
+            <div className="flex items-baseline font-mono">
+              <span className="text-4xl md:text-5xl font-black text-foreground tracking-tighter">
+                0{selectedIndex + 1}
+              </span>
+              <span className="mx-3 text-muted-foreground font-light text-xl">
+                /
+              </span>
+              <span className="text-muted-foreground text-xs font-bold tracking-[0.2em] uppercase opacity-50">
+                0{images.length}
+              </span>
+            </div>
+
+            <div className="flex gap-px">
+              <button
+                onClick={() => emblaApi?.scrollPrev()}
+                className="flex h-12 w-12 items-center justify-center bg-card text-foreground hover:bg-primary hover:text-white transition-all border border-white/5 shadow-sm">
+                <ChevronLeft size={20} />
+              </button>
+              <button
+                onClick={() => emblaApi?.scrollNext()}
+                className="flex h-12 w-12 items-center justify-center bg-card text-foreground hover:bg-primary hover:text-white transition-all border border-white/5 shadow-sm">
+                <ChevronRight size={20} />
+              </button>
+            </div>
+          </div>
+        </div>
+
+        {/* Dots Indicator */}
+        <div className="flex justify-center gap-2 mt-6">
+          {images.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                index === selectedIndex
+                  ? "bg-primary w-8"
+                  : "bg-muted hover:bg-primary/50"
+              }`}
+            />
+          ))}
+        </div>
+
+        {/* Thumbnail Preview */}
+        <div className="hidden md:flex justify-center gap-4 mt-8">
+          {images.map((image, index) => (
+            <motion.button
+              key={index}
+              onClick={() => emblaApi?.scrollTo(index)}
+              className={`relative w-20 h-14 rounded-lg overflow-hidden transition-all duration-300 ${
+                index === selectedIndex
+                  ? "ring-2 ring-primary ring-offset-2 ring-offset-background scale-110"
+                  : "opacity-60 hover:opacity-100"
+              }`}
+              whileHover={{ scale: index === selectedIndex ? 1.1 : 1.05 }}>
+              <Image
+                src={image.src}
+                alt={image.alt}
+                width={80}
+                height={56}
+                className="object-cover w-full h-full"
+              />
+            </motion.button>
+          ))}
         </div>
       </div>
     </section>
