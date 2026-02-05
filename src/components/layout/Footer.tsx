@@ -17,8 +17,16 @@ const Footer = () => {
   ];
 
   const socialLinks = [
-    { icon: Instagram, href: "https://www.instagram.com/studentsxceosjkt/", label: "Instagram" },
-    { icon: Linkedin, href: "https://www.linkedin.com/company/studentsxceos", label: "LinkedIn" },
+    {
+      icon: Instagram,
+      href: "https://www.instagram.com/studentsxceosjkt/",
+      label: "Instagram",
+    },
+    {
+      icon: Linkedin,
+      href: "https://www.linkedin.com/company/studentsxceos",
+      label: "LinkedIn",
+    },
     { icon: Mail, href: "mailto:contact@studentsxceos.com", label: "Email" },
   ];
 
@@ -29,16 +37,18 @@ const Footer = () => {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-2 mb-4 relative">
-              <Image src={monas} alt="Monas" className="size-30 absolute -left-12 -top-14" />
+              <Image
+                src={monas}
+                alt="Monas"
+                className="size-30 absolute -left-12 -top-14"
+              />
               {/* Bisa di atur disini */}
               <div className="ml-9">
                 <span className="font-bold text-primary-foreground">
                   Students
                 </span>
                 <span className="text-primary font-bold">x</span>
-                <span className="font-bold text-primary-foreground">
-                  CEOs
-                </span>
+                <span className="font-bold text-primary-foreground">CEOs</span>
               </div>
             </div>
             <p className="text-secondary-foreground mb-4 max-w-md font-light">
@@ -54,7 +64,7 @@ const Footer = () => {
           {/* Quick Links */}
           <div>
             <h4 className="text-primary-foreground font-semibold mb-4">
-              Quick Links
+              Explore
             </h4>
             <ul className="space-y-3">
               {quickLinks.map((link) => (
@@ -94,10 +104,9 @@ const Footer = () => {
 
         {/* Divider */}
         <div className="border-t border-border/50 pt-8">
-       
-            <p className="text-sm text-secondary-foreground text-center font-light">
-              © {currentYear} StudentsxCEOs Jakarta. All rights reserved.
-            </p>
+          <p className="text-sm text-secondary-foreground text-center font-light">
+            © {currentYear} StudentsxCEOs Jakarta. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

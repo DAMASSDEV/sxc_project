@@ -23,7 +23,9 @@ export default function PartnershipHeader({
     return (
       <>
         {before}
-        <span className="text-primary">{highlight}</span>
+        <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
+          {highlight}
+        </span>
         {after}
       </>
     );
@@ -35,8 +37,7 @@ export default function PartnershipHeader({
       initial={{ opacity: 0, y: 24 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.6 }}
-      className="text-center max-w-3xl mx-auto mb-14"
-    >
+      className="text-center max-w-3xl mx-auto mb-14">
       <span className="text-primary text-sm font-semibold uppercase tracking-wider">
         {eyebrow}
       </span>
