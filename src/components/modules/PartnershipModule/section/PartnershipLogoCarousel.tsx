@@ -101,9 +101,9 @@ export default function PartnerLogoCarousel({
                         width={160}
                         height={64}
                         className={cn(
-                          "h-10 w-auto object-contain",
-                          "opacity-70 grayscale transition",
-                          "group-hover:opacity-100 group-hover:grayscale-0",
+                          "h-10 w-auto object-contain transition duration-300",
+                          "opacity-100 grayscale-0",
+                          "md:opacity-70 md:grayscale md:group-hover:opacity-100 md:group-hover:grayscale-0",
                         )}
                         priority={rowIndex === 0 && idx < 8}
                       />

@@ -5,31 +5,36 @@ export const stakeholders: Stakeholder[] = [
   {
     key: "principal-tech-owner",
     title: "Principal Tech Owner",
-    description: "Kolaborasi dengan pemilik teknologi utama untuk kurikulum & standar industri.",
+    description:
+      "Collaboration with key technology owners for curriculum & industry standards.",
     icon: Cpu,
   },
   {
     key: "government-partner",
     title: "Government & Impact Partner",
-    description: "Bermitra dengan institusi publik untuk program berskala nasional dan dampak terukur.",
+    description:
+      "Partner with public institutions for programmes of national scale and measurable impact.",
     icon: Building2,
   },
   {
     key: "industry-players",
     title: "Industry Players",
-    description: "Kolaborasi dengan perusahaan untuk penyaluran talenta, project nyata, dan sertifikasi.",
+    description:
+      "Collaboration with companies for talent channelling, real-world projects, and certification.",
     icon: Handshake,
   },
   {
     key: "universities",
     title: "Universities",
-    description: "Sinergi dengan kampus untuk pembelajaran, riset, dan pengembangan talenta.",
+    description:
+      "Synergy with campuses for learning, research, and talent development.",
     icon: GraduationCap,
   },
   {
     key: "community",
     title: "Community & Public Reach",
-    description: "Menguatkan komunitas & awareness lewat kegiatan dan konten yang konsisten.",
+    description:
+      "Strengthen community & awareness through consistent activities and content.",
     icon: Globe2,
   },
 ];

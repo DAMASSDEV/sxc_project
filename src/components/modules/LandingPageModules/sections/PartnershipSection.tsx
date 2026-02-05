@@ -152,10 +152,10 @@ const PartnershipSection = () => {
             }
             subtitle={
               <>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-2">
-                  Trusted by leading{" "}
+                <h3 className="text-3xl md:text-4xl lg:text-4xl font-bold mt-3 mb-2 lg:whitespace-nowrap lg:w-fit lg:mx-auto">
+                  Trusted by Leading{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
-                    companies &amp; organizations
+                    Companies &amp; Organizations
                   </span>
                 </h3>
                 <p className="text-muted-foreground text-lg">
