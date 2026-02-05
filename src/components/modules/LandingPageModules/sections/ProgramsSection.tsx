@@ -89,7 +89,7 @@ const ProgramsSection = () => {
                   2. lg:min-h-[520px] untuk desktop agar tetap konsisten.
                   3. Flex-col di mobile dan flex-row di desktop.
                 */}
-                <div className="group flex flex-col lg:flex-row bg-[#0a0a0a] border border-white/5 overflow-hidden min-h-150 lg:min-h-130 h-full shadow-2xl items-stretch">
+                <div className="group flex flex-col lg:flex-row bg-white border-2 border-primary/20 overflow-hidden min-h-[600px] lg:min-h-[520px] h-full shadow-2xl shadow-primary/10 hover:border-primary/40 hover:shadow-xl hover:shadow-primary/20 transition-all duration-300 items-stretch">
                   {/* Sisi Atas/Kiri: Gambar */}
                   <div className="relative w-full lg:w-1/2 h-62.5 lg:h-auto overflow-hidden shrink-0">
                     <div className="absolute top-6 left-6 z-20 bg-primary px-5 py-1.5 text-white text-[10px] font-black uppercase tracking-[0.2em]">
@@ -107,34 +107,34 @@ const ProgramsSection = () => {
                   </div>
 
                   {/* Sisi Bawah/Kanan: Konten */}
-                  <div className="flex flex-col justify-between p-6 md:p-8 lg:p-14 w-full lg:w-1/2 text-white grow">
+                  <div className="flex flex-col justify-between p-6 md:p-8 lg:p-14 w-full lg:w-1/2 grow">
                     <div className="space-y-4 lg:space-y-6">
                       <div className="flex items-center gap-4">
-                        <div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
+                        <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20">
                           <program.icon className="w-5 h-5 text-primary" />
                         </div>
-                        <div className="h-px flex-1 bg-white/5" />
+                        <div className="h-px flex-1 bg-gray-200" />
                       </div>
 
-                      <h3 className="text-2xl lg:text-4xl font-bold tracking-tighter leading-[1.1]">
+                      <h3 className="text-2xl lg:text-4xl font-bold text-foreground tracking-tighter leading-[1.1]">
                         {program.title}
                       </h3>
 
                       {/* Penyesuaian Mobile: 
                         Hapus line-clamp jika ingin semua teks muncul, atau atur jumlah baris yang lebih banyak di mobile.
                       */}
-                      <p className="text-gray-400 text-sm md:text-base leading-relaxed max-w-md font-light">
+                      <p className="text-muted-foreground text-sm md:text-base leading-relaxed max-w-md font-light">
                         {program.description}
                       </p>
                     </div>
 
                     {/* Footer Kartu */}
                     <div className="space-y-6 mt-8 lg:mt-0">
-                      <div className="pt-6 border-t border-white/5">
+                      <div className="pt-6 border-t border-gray-200">
                         <p className="text-[9px] uppercase tracking-[0.3em] text-primary font-black mb-2">
                           Target Audience
                         </p>
-                        <p className="text-xs font-medium text-gray-300 uppercase tracking-widest">
+                        <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest">
                           {program.targetAudience}
                         </p>
                       </div>
@@ -142,7 +142,7 @@ const ProgramsSection = () => {
                       <div className="pt-2">
                         <a
                           href="/program"
-                          className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] group/btn transition-colors hover:text-primary">
+                          className="flex items-center gap-4 text-[10px] font-black uppercase tracking-[0.3em] text-foreground group/btn transition-colors hover:text-primary">
                           Read More
                           <div className="relative flex h-10 w-10 items-center justify-center bg-primary transition-all duration-300 group-hover/btn:w-14 shrink-0">
                             <ArrowRight className="h-4 w-4 text-white" />

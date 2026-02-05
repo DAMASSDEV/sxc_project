@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { programs } from "./program_data";
 import ChatbotFAB from "../ChatbotModule";
+import BackToTopButton from "../LandingPageModules/sections/BackToTopButton";
 
 export const ProgramModule = () => {
   const ref = useRef(null);
@@ -45,7 +46,7 @@ export const ProgramModule = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
-                className="group flex flex-row bg-[#180A5E] border border-white/5 overflow-hidden rounded-md shadow-2xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
+                className="group flex flex-row bg-white border border-gray-200 overflow-hidden rounded-md shadow-2xl hover:border-primary/30 transition-all duration-300 hover:shadow-lg hover:shadow-primary/20">
                 {/* Image Section */}
                 <div className="relative w-1/3 h-auto min-h-[400px] overflow-hidden bg-black/30 shrink-0">
                   <div className="absolute top-4 left-4 z-20 bg-primary px-4 py-1.5 text-white text-[10px] font-black uppercase tracking-[0.15em] rounded-md">
@@ -62,27 +63,27 @@ export const ProgramModule = () => {
                 </div>
 
                 {/* Content Section */}
-                <div className="flex flex-col flex-1 p-6 md:p-8 text-white">
+                <div className="flex flex-col flex-1 p-6 md:p-8">
                   <div className="flex items-center gap-3 mb-4">
-                    <div className="p-2.5 rounded-lg bg-white/5 border border-white/10">
+                    <div className="p-2.5 rounded-lg bg-primary/10 border border-primary/20">
                       <Icon className="w-5 h-5 text-primary" />
                     </div>
-                    <div className="h-px flex-1 bg-white/5" />
+                    <div className="h-px flex-1 bg-gray-200" />
                   </div>
 
-                  <h3 className="text-xl md:text-2xl font-bold text-white mb-3 leading-tight">
+                  <h3 className="text-xl md:text-2xl font-bold text-foreground mb-3 leading-tight">
                     {program.title}
                   </h3>
 
-                  <p className="text-gray-400 text-sm md:text-base leading-relaxed mb-5 flex-1 font-light">
+                  <p className="text-muted-foreground text-sm md:text-base leading-relaxed mb-5 flex-1 font-light">
                     {program.description}
                   </p>
 
-                  <div className="pt-4 border-t border-white/5">
+                  <div className="pt-4 border-t border-gray-200">
                     <p className="text-[9px] uppercase tracking-[0.2em] text-primary font-black mb-2">
                       Target Audience
                     </p>
-                    <p className="text-xs font-medium text-gray-300 uppercase tracking-widest mb-5">
+                    <p className="text-xs font-medium text-muted-foreground uppercase tracking-widest mb-5">
                       {program.targetAudience}
                     </p>
 
@@ -104,6 +105,7 @@ export const ProgramModule = () => {
         </div>
       </div>
       <ChatbotFAB />
+      <BackToTopButton />
     </section>
   );
 };
