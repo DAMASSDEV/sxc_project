@@ -73,7 +73,10 @@ const PartnershipSection = () => {
             Partnership
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mt-3 mb-6">
-            Build the Future <span className="text-primary">Together</span>
+            Build the Future{" "}
+            <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
+              Together
+            </span>
           </h2>
           <p className="text-muted-foreground text-lg">
             Join 100+ leading companies in shaping Indonesias next generation of
@@ -154,10 +157,10 @@ const PartnershipSection = () => {
             }
             subtitle={
               <>
-                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-2">
-                  Trusted by leading{" "}
+                <h3 className="text-3xl md:text-4xl lg:text-4xl font-bold mt-3 mb-2 lg:whitespace-nowrap lg:w-fit lg:mx-auto">
+                  Trusted by Leading{" "}
                   <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
-                    companies &amp; organizations
+                    Companies &amp; Organizations
                   </span>
                 </h3>
                 <p className="text-muted-foreground text-lg">
