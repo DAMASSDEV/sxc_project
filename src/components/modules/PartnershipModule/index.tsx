@@ -56,8 +56,8 @@ const PartnershipModule = () => {
         >
           {/* Stakeholders */}
           <div className="mb-10 mt-20">
-            <h3 className="text-2xl font-bold mb-4 text-center">Key Stakeholders</h3>
-            <p className="text-muted-foreground mb-6 text-center">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Key Stakeholders</h3>
+            <p className="text-lg text-muted-foreground mb-6 text-center">
               Our collaboration rests on strong relationships with key
               stakeholders in the talent development ecosystem.
             </p>
@@ -66,8 +66,8 @@ const PartnershipModule = () => {
 
           {/* Program Partnerships */}
           <div className="mt-20">
-            <h3 className="text-2xl font-bold mb-4 text-center">Partnership Programs</h3>
-            <p className="text-muted-foreground mb-6 text-center">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Partnership Programs</h3>
+            <p className="text-lg text-muted-foreground mb-6 text-center">
               Examples of collaborative programmes designed to produce tangible
               and measurable outcomes.
             </p>
