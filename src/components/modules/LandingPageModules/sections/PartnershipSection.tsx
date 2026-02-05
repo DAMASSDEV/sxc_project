@@ -147,8 +147,24 @@ const PartnershipSection = () => {
         >
           <PartnerLogoCarousel
             items={partnerLogos}
-            title="Our Partners"
-            subtitle="Trusted by leading companies & organizations"
+            title={
+              <span className="text-primary text-sm font-semibold uppercase tracking-wider cursor-pointer">
+                Our Partners
+              </span>
+            }
+            subtitle={
+              <>
+                <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mt-3 mb-2">
+                  Trusted by leading{" "}
+                  <span className="text-transparent bg-clip-text bg-linear-to-r from-primary to-accent">
+                    companies &amp; organizations
+                  </span>
+                </h3>
+                <p className="text-muted-foreground text-lg">
+                  Companies & communities that are already collaborating.
+                </p>
+              </>
+            }
             className="mt-12"
             cardClassName="bg-card/50 backdrop-blur-sm"
           />
