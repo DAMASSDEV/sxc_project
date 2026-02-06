@@ -102,8 +102,8 @@ const ProgramCarousel = () => {
                   </div>
 
                   {/* Footer Kartu */}
-                  <div className="space-y-6 mt-8 lg:mt-0">
-                    <div className="pt-6 border-t border-gray-200">
+                  <div className="space-y-6 mt-4 lg:mt-0">
+                    <div className="pt-4 border-t border-gray-200">
                       <p className="text-[9px] uppercase tracking-[0.3em] text-primary font-black mb-2">
                         Target Audience
                       </p>
