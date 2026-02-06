@@ -94,7 +94,7 @@ const ContactModule = () => {
                   />
                   <Input
                     type="email"
-                    placeholder="your@gmail.com"
+                    placeholder="email@example.com"
                     value={formData.email}
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })

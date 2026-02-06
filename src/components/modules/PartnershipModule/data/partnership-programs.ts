@@ -6,7 +6,7 @@ export const partnershipPrograms: PartnershipProgramDTO[] = [
     title: "Career Readiness Program",
     partner: "Partner Consortium",
     description:
-      "Program intensif untuk mempersiapkan talenta dengan skill in-demand, sertifikasi, dan capstone project.",
+      "Intensive programmes to prepare talents with in-demand skills, certifications, and capstone projects.",
     tags: ["Intensive", "Certification", "Capstone"],
     href: "#",
   },
@@ -15,7 +15,7 @@ export const partnershipPrograms: PartnershipProgramDTO[] = [
     title: "Scholarship Coding Camp",
     partner: "Foundation Partner",
     description:
-      "Beasiswa pelatihan teknologi dengan kombinasi skill teknis dan pendukung (soft skills & readiness).",
+      "Technology training scholarships with a combination of technical and supporting skills (soft skills & readiness).",
     tags: ["Scholarship", "Mentoring"],
     href: "#",
   },
@@ -24,7 +24,7 @@ export const partnershipPrograms: PartnershipProgramDTO[] = [
     title: "Back-End Academy",
     partner: "Cloud Provider Partner",
     description:
-      "Pelatihan back-end terstruktur: fundamental, praktik industri, dan penguatan portofolio.",
+      "Structured back-end training: fundamentals, industry practices, and portfolio strengthening.",
     tags: ["Backend", "Cloud"],
     href: "#",
   },

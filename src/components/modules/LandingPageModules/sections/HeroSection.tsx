@@ -9,7 +9,7 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-secondary">
+      className="relative min-h-screen flex items-start justify-center pt-30 md:pt-30 overflow-hidden bg-secondary">
       {/* Gradient Overlay */}
       <div className="absolute inset-0 bg-linear-to-b from-secondary via-secondary/95 to-secondary" />
 

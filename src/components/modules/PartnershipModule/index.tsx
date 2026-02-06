@@ -14,6 +14,7 @@ import PartnershipLogoCarousel from "./section/PartnershipLogoCarousel";
 import { partnerLogos } from "./data/partner-logos";
 import ChatbotFAB from "../ChatbotModule";
 import BackToTopButton from "../LandingPageModules/sections/BackToTopButton";
+import PartnerLogoCarousel from "./section/PartnershipLogoCarousel";
 
 const PartnershipModule = () => {
   const ref = useRef<HTMLDivElement | null>(null);
@@ -26,8 +27,25 @@ const PartnershipModule = () => {
           eyebrow="Partnership Ecosystem"
           title="Built with Trusted Partnerships"
           highlight="Trusted"
-          description="Kami membangun ekosistem kolaborasi lintas stakeholder untuk memperluas akses, kualitas, dan dampak program."
+          description=" Our collaboration rests on strong relationships with key
+              stakeholders in the talent development ecosystem."
         />
+
+        {/* Partner Logos */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.5 }}
+          className="text-center"
+        >
+          <PartnerLogoCarousel
+            items={partnerLogos}
+            title={""}
+            subtitle={""}
+            className=""
+            cardClassName="bg-card/50 backdrop-blur-sm"
+          />
+        </motion.div>
 
         <motion.div
           ref={ref}
@@ -36,17 +54,10 @@ const PartnershipModule = () => {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="max-w-6xl mx-auto"
         >
-          {/* Partner logo carousel */}
-          <PartnershipLogoCarousel
-            items={partnerLogos}
-            title="Past Partnership"
-            subtitle="Companies & communities that are already collaborating."
-          />
-
           {/* Stakeholders */}
-          <div className="mb-10">
-            <h3 className="text-2xl font-bold mb-4">Key Stakeholders</h3>
-            <p className="text-muted-foreground mb-6">
+          <div className="mb-10 mt-20">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Key Stakeholders</h3>
+            <p className="text-lg text-muted-foreground mb-6 text-center">
               Our collaboration rests on strong relationships with key
               stakeholders in the talent development ecosystem.
             </p>
@@ -54,9 +65,9 @@ const PartnershipModule = () => {
           </div>
 
           {/* Program Partnerships */}
-          <div className="mt-14">
-            <h3 className="text-2xl font-bold mb-4">Partnership Programs</h3>
-            <p className="text-muted-foreground mb-6">
+          <div className="mt-20">
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-center">Partnership Programs</h3>
+            <p className="text-lg text-muted-foreground mb-6 text-center">
               Examples of collaborative programmes designed to produce tangible
               and measurable outcomes.
             </p>
@@ -72,8 +83,7 @@ const PartnershipModule = () => {
         </motion.div>
       </div>
       <ChatbotFAB />
-      <BackToTopButton/>
-
+      <BackToTopButton />
     </section>
   );
 };

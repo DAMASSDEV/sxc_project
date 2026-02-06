@@ -8,8 +8,8 @@ import type { PartnerLogo } from "../types";
 
 type Props = {
   items: PartnerLogo[];
-  title?: string;
-  subtitle?: string;
+  title?: React.ReactNode;
+  subtitle?: React.ReactNode;
   className?: string;
   cardClassName?: string;
 };
@@ -28,8 +28,8 @@ type RowConfig = {
 
 export default function PartnerLogoCarousel({
   items,
-  title = "Partner & Komunitas",
-  subtitle = "Perusahaan & komunitas yang sudah berkolaborasi.",
+  title = "",
+  subtitle = "",
   className,
   cardClassName,
 }: Props) {
@@ -44,15 +44,27 @@ export default function PartnerLogoCarousel({
   return (
     <section className={cn("w-full py-10", className)}>
       <div className="container mx-auto px-4">
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+        <div className="mb-6 text-center">
+          {title ? (
+            typeof title === "string" ? (
+              <span className="text-primary text-sm font-semibold uppercase tracking-wider">
+                {title}
+              </span>
+            ) : (
+              title
+            )
+          ) : null}
+
           {subtitle ? (
-            <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+            typeof subtitle === "string" ? (
+              <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>
+            ) : (
+              subtitle
+            )
           ) : null}
         </div>
 
         <div className="partner-marquee relative overflow-hidden rounded-2xl border bg-background">
-          {/* mask gradient left/right */}
           <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-background to-transparent" />
           <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-background to-transparent" />
 
@@ -89,9 +101,9 @@ export default function PartnerLogoCarousel({
                         width={160}
                         height={64}
                         className={cn(
-                          "h-10 w-auto object-contain",
-                          "opacity-70 grayscale transition",
-                          "group-hover:opacity-100 group-hover:grayscale-0",
+                          "h-10 w-auto object-contain transition duration-300",
+                          "opacity-100 grayscale-0",
+                          "md:opacity-70 md:grayscale md:group-hover:opacity-100 md:group-hover:grayscale-0",
                         )}
                         priority={rowIndex === 0 && idx < 8}
                       />
